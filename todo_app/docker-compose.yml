@@ -9,7 +9,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
   app:
-    image: todoapp00
+    build: .
     command: |
       sh -c " sh migratedb.sh &&
               python manage.py runserver 0.0.0.0:8000"
