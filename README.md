@@ -63,7 +63,7 @@ kubectl apply -f argocd-objects/prod.yaml -n argocd
 ### Kyverno Polices
 ![kyverno-policy](/images/kyverno-policy.png)   
 
-# Notes: 
+## Notes: 
 1. there is still need to manage the env secrets, to be improved.
 2. the database for test and prod need to different, however it is one instance here for demo purposes.
 3. it is better to have two different repos for app and k8s config. 
