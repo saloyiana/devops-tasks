@@ -2,7 +2,7 @@
 
 ## Application flow
 
-![app-overview](/images/app-overview.png width=250)   
+![app-overview](/images/app-overview.png | width=250)   
 
 ## to run the app locally: 
 1. clone the repo `git clone -b main https://github.com/saloyiana/devops-tasks`   
