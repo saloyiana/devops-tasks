@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: test
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: This is for test env
+  sourceRepos:
+  - '*'
+  destinations:
+  - namespace: app-test
+    server: https://kubernetes.default.svc
+    name: in-cluster
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: todo-test
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: test
+  sources:
+  - repoURL: https://github.com/saloyiana/devops-tasks
+    targetRevision: app-test
+    path: platform/todo-app 
+    ref: test-env 
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: app-test
+  info:
+    - name: 'Project:'
+      value: 'todo' 
+  syncPolicy:
+    automated: 
+      prune: true
+      selfHeal: true 
+      allowEmpty: false

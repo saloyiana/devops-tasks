@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: prod
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: This is for prod env
+  sourceRepos:
+  - '*'
+  destinations:
+  - namespace: app-prod
+    server: https://kubernetes.default.svc
+    name: in-cluster
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: todo-prod
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: prod
+  sources:
+  - repoURL: https://github.com/saloyiana/devops-tasks
+    targetRevision: app-prod
+    path: platform/todo-app 
+    ref: prod-env 
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: app-prod
+  info:
+    - name: 'Project:'
+      value: 'todo' 
+  syncPolicy:
+    automated: 
+      prune: true
+      selfHeal: true 
+      allowEmpty: false
