@@ -56,7 +56,7 @@ kubectl apply -f argocd-objects/prod.yaml -n argocd
 ![k8s-ns](/images/k8s-ns.png)   
 
 ### CI/CD Steps
-![app-overview](images/app-overview.png)   
+![cicd-overview](/images/ci-cd-overview.png)   
 
 ### Argocd Apps
 ![argocd-ui](/images/argocd-ui.png)   
