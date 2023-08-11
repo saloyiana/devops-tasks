@@ -3,7 +3,7 @@ up: cluster namespaces tools db argocd-test argocd-prod
 prod: argocd-prod
 
 cluster:
-    cd platform/aks
+    cd platform/k8s-cluster
 	terraform init
 	terraform apply -auto-approve 
 
@@ -52,7 +52,7 @@ clean:
 	kubectl delete namespace db-prod
 
 cluster-down:
-    cd platform/aks
+    cd platform/k8s-cluster
 	terraform destroy -auto-approve 
 
 down: clean cluster-down
