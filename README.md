@@ -2,7 +2,9 @@
 
 ## Application flow - K8S Level
 
-![app-overview](/images/app-overview.png)   
+When the client hits the app endpoint, the k8s level flow as below: 
+
+![app-overview](/images/app-overview.png) 
 
 ## to run the app locally: 
 1. clone the repo `git clone -b main https://github.com/saloyiana/devops-tasks`   
@@ -64,3 +66,4 @@ kubectl apply -f argocd-objects/prod.yaml -n argocd
 # Notes: 
 1. there is still need to manage the env secrets, to be improved.
 2. the database for test and prod need to different, however it is one instance here for demo purposes.
+3. it is better to have two different repos for app and k8s config. 
