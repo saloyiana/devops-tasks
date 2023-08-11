@@ -111,9 +111,10 @@ jobs:
       - name: docker-push
         uses: docker/build-push-action@v4
         with:
+          context: "{{defaultContext}}:todo_app"
           push: true
           tags: ${{ env.Image }}:${{ env.Tag }}
-    
+
   deploy_to_test:
     name: deploy to test
     needs: container_image
