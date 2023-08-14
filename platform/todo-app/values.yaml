@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: saloyiana/todo-app
+  repository: "saloyiana/todo-app"
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v1.5"
+  tag: "v1.0.8"
 
 imagePullSecrets: []
 nameOverride: ""
