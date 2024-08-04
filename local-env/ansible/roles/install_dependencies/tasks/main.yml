@@ -1,0 +1,24 @@
+---
+- name: Ensure Docker is installed
+  apt:
+    name: docker.io
+    state: present
+  tags: docker
+
+- name: Ensure Minikube is installed
+  apt:
+    name: minikube
+    state: present
+  tags: minikube
+
+- name: Ensure kubectl is installed
+  apt:
+    name: kubectl
+    state: present
+  tags: kubectl
+
+- name: Ensure Helm is installed
+  apt:
+    name: helm
+    state: present
+  tags: helm

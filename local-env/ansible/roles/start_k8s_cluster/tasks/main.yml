@@ -1,0 +1,14 @@
+---
+- name: Start Minikube
+  command: minikube start --driver=docker
+  environment:
+    MINIKUBE_IN_STYLE: "false"
+  tags: minikube
+
+- name: Configure kubectl for Minikube
+  command: minikube update-context
+  tags: kubectl
+
+- name: Create app namepsace
+  command: kubectl create ns app
+  tags: kubectl

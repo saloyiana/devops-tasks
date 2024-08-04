@@ -1,0 +1,11 @@
+---
+- name: CI/CD Pipeline with Ansible and Helm
+  hosts: localhost
+  become: true
+  vars_files:
+    - group_vars/all.yml
+  roles:
+    - role: install_dependencies
+    - role: build_push_docker_image
+    - role: start_k8s_cluster
+    - role: deploy_app

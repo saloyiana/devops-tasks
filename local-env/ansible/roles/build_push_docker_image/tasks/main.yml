@@ -1,0 +1,23 @@
+---
+- name: Log in to Docker registry
+  shell: docker login -u {{ registry_username }} -p {{ registry_password }} {{ docker_registry }}
+  no_log: true
+  register: docker_login_result
+  ignore_errors: true
+  tags: docker
+
+- name: Check Docker login result
+  fail:
+    msg: "Docker login failed"
+  when: docker_login_result.rc != 0
+  tags: docker
+
+- name: Build Docker image
+  command: docker build -t {{ docker_registry }}/{{ docker_image_name }}:{{ docker_image_tag }} -f {{ dockerfile_path }} .
+  args:
+    chdir: "{{ playbook_dir }}"
+  tags: docker
+
+- name: Push Docker image to registry
+  command: docker push {{ docker_registry }}/{{ docker_image_name }}:{{ docker_image_tag }}
+  tags: docker

@@ -1,0 +1,10 @@
+docker_registry: "saloyiana"
+docker_image_name: "todo-app"
+docker_image_tag: "latest-alpha"
+dockerfile_path: "../../todo_app/Dockerfile"
+helm_chart_path: "../../platform/local/todo-app"
+helm_release_name: "my-app"
+helm_namespace: "app"
+kubectl_context: "minikube"
+registry_username: ${{ secrets.DOCKER_USERNAME }}
+registry_password: ${{ secrets.DOCKER_PASSWORD }}

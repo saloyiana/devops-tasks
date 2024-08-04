@@ -1,0 +1,8 @@
+---
+- name: Deploy Helm chart
+  command: helm upgrade --install \
+          {{ helm_release_name }} {{ helm_chart_path }} \
+          --namespace {{ helm_namespace }} \
+          --set image.repository={{ docker_registry }}/{{ docker_image_name }} \
+          --set image.tag={{ docker_image_tag }}
+  tags: helm
