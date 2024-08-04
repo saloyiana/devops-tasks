@@ -20,9 +20,9 @@ However, if you want to set up a k8s cluster on your local machine for a more pr
 2. run `cd local-env && make up`. 
 
 ### directory structure:
-- todo_app: contains the application code and its dockerfile.
-- local-env/terraform: contains cluster trerraform configuration files for setting up the local k8s cluster.
-- local-env/ansible: contains ansible playbooks and roles for deploying the application.
+- `todo_app:` contains the application code and its dockerfile.
+- `local-env/terraform:` contains cluster trerraform configuration files for setting up the local k8s cluster.
+- `local-env/ansible:` contains ansible playbooks and roles for deploying the application.
 
 ## to run the app on k8s env
 1. add your creds to the `platform/k8s-cluster/terraform.tfvars`
